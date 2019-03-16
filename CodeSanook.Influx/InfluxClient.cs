@@ -30,6 +30,8 @@ namespace CodeSanook.Influx
 
         public dynamic Query(string query)
         {
+            Console.WriteLine($"query: {query}");
+
             var func = Edge.Func(@"
                 var influx = require('influx');
 
@@ -51,16 +53,17 @@ namespace CodeSanook.Influx
 
             var options = new
             {
-                option.Host,
-                option.Port,
-                option.Protocol,
-                option.Username,
-                option.Password,
-                option.Database,
+                host = option.Host.Trim(),
+                port = option.Port.Trim(),
+                protocol = option.Protocol.Trim(),
+                username = option.Username.Trim(),
+                password = option.Password.Trim(),
+                database = option.Database.Trim(),
                 query
             };
+            var task = func(options);
+            return task.Result;
 
-            return func(options).Result;
             //dynamic data = response[0];
             //var name = data.name;
             ////Console.WriteLine(JsonConvert.SerializeObject(, Formatting.Indented));
