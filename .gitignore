@@ -261,4 +261,5 @@ __pycache__/
 *.pyc
 
 config.yaml
+config.yml
 output.txt

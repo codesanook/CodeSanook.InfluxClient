@@ -8,12 +8,12 @@ namespace CodeSanook.Influx
 {
     public class InfluxClient
     {
-        private Option option;
+        private readonly Option option;
 
         public InfluxClient(string configPath)
         {
             Console.WriteLine($"loading config from {configPath}");
-            this.option = GetOption(configPath);
+            option = GetOption(configPath);
             Console.WriteLine($"option host {option.Host}");
         }
 
